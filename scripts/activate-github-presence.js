@@ -79,7 +79,7 @@ class GitHubActivator {
     log.task('Otimizando perfil do GitHub...');
 
     // Criar estrutura para README pessoal
-    const profileDir = path.join(os.homedir(), CONFIG.githubUsername);
+    const profileDir = path.join(path.dirname(process.cwd()), 'GITHUB_PROFILE_' + CONFIG.githubUsername);
     
     try {
       await fs.mkdir(profileDir, { recursive: true });
@@ -256,7 +256,7 @@ Autonomous GitHub Intelligence system with adaptive learning.
 </div>
 `;
 
-    const readmePath = path.join(os.homedir(), CONFIG.githubUsername, 'README.md');
+    const readmePath = path.join(path.dirname(process.cwd()), 'GITHUB_PROFILE_' + CONFIG.githubUsername, 'README.md');
     
     try {
       await fs.writeFile(readmePath, template);
