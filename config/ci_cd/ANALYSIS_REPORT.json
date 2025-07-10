@@ -1,0 +1,146 @@
+{
+  "summary": {
+    "totalIssues": 19,
+    "criticalIssues": 0,
+    "highIssues": 0,
+    "mediumIssues": 3,
+    "lowIssues": 16,
+    "correctionsApplied": 0,
+    "errors": 0
+  },
+  "issues": [
+    {
+      "category": "terminology",
+      "description": "Uso indevido do termo \"quantum\" em src\\tools\\system-analysis.js:210",
+      "severity": "medium",
+      "timestamp": "2025-07-10T01:02:20.169Z"
+    },
+    {
+      "category": "terminology",
+      "description": "Uso indevido do termo \"neural\" em src\\tools\\system-analysis.js:210",
+      "severity": "medium",
+      "timestamp": "2025-07-10T01:02:20.169Z"
+    },
+    {
+      "category": "terminology",
+      "description": "Uso indevido do termo \"consciousness\" em src\\tools\\system-analysis.js:210",
+      "severity": "medium",
+      "timestamp": "2025-07-10T01:02:20.169Z"
+    },
+    {
+      "category": "code-quality",
+      "description": "Muitos console.log (39) em src\\activate-github-presence.js",
+      "severity": "low",
+      "timestamp": "2025-07-10T01:02:20.193Z"
+    },
+    {
+      "category": "code-quality",
+      "description": "Muitos console.log (49) em src\\agents\\commands.js",
+      "severity": "low",
+      "timestamp": "2025-07-10T01:02:20.194Z"
+    },
+    {
+      "category": "code-quality",
+      "description": "Muitos console.log (14) em src\\agents\\github-agent.js",
+      "severity": "low",
+      "timestamp": "2025-07-10T01:02:20.194Z"
+    },
+    {
+      "category": "code-quality",
+      "description": "Muitos console.log (6) em src\\agents\\loader.js",
+      "severity": "low",
+      "timestamp": "2025-07-10T01:02:20.194Z"
+    },
+    {
+      "category": "code-quality",
+      "description": "Muitos console.log (22) em src\\agents\\payment-gateway.js",
+      "severity": "low",
+      "timestamp": "2025-07-10T01:02:20.194Z"
+    },
+    {
+      "category": "code-quality",
+      "description": "Muitos console.log (16) em src\\api\\basic-api-usage.js",
+      "severity": "low",
+      "timestamp": "2025-07-10T01:02:20.195Z"
+    },
+    {
+      "category": "code-quality",
+      "description": "Muitos console.log (44) em src\\api\\github-client.js",
+      "severity": "low",
+      "timestamp": "2025-07-10T01:02:20.195Z"
+    },
+    {
+      "category": "code-quality",
+      "description": "Muitos console.log (27) em src\\GIDEN_ADAPTIVE_DEVELOPER.js",
+      "severity": "low",
+      "timestamp": "2025-07-10T01:02:20.197Z"
+    },
+    {
+      "category": "code-quality",
+      "description": "Muitos console.log (15) em src\\mcp\\docsync-integration.js",
+      "severity": "low",
+      "timestamp": "2025-07-10T01:02:20.198Z"
+    },
+    {
+      "category": "code-quality",
+      "description": "Muitos console.log (26) em src\\mcp\\giden-integration.js",
+      "severity": "low",
+      "timestamp": "2025-07-10T01:02:20.199Z"
+    },
+    {
+      "category": "code-quality",
+      "description": "Muitos console.log (43) em src\\mcp\\webhook-server.js",
+      "severity": "low",
+      "timestamp": "2025-07-10T01:02:20.200Z"
+    },
+    {
+      "category": "code-quality",
+      "description": "Muitos console.log (6) em src\\run-all.js",
+      "severity": "low",
+      "timestamp": "2025-07-10T01:02:20.200Z"
+    },
+    {
+      "category": "code-quality",
+      "description": "Muitos console.log (42) em src\\run-integrated-system.js",
+      "severity": "low",
+      "timestamp": "2025-07-10T01:02:20.200Z"
+    },
+    {
+      "category": "code-quality",
+      "description": "Muitos console.log (17) em src\\tools\\system-analysis.js",
+      "severity": "low",
+      "timestamp": "2025-07-10T01:02:20.201Z"
+    },
+    {
+      "category": "code-quality",
+      "description": "Muitos console.log (29) em src\\utils\\env-validator.js",
+      "severity": "low",
+      "timestamp": "2025-07-10T01:02:20.201Z"
+    },
+    {
+      "category": "code-quality",
+      "description": "Muitos console.log (19) em src\\utils\\gh-cli.js",
+      "severity": "low",
+      "timestamp": "2025-07-10T01:02:20.201Z"
+    }
+  ],
+  "corrections": [],
+  "metrics": {
+    "filesAnalyzed": 33,
+    "issuesFound": 19,
+    "correctionsApplied": 0,
+    "errors": 0
+  },
+  "recommendations": [
+    {
+      "priority": "medium",
+      "action": "Executar linter e formatter",
+      "command": "npm run lint:fix && npm run format"
+    },
+    {
+      "priority": "low",
+      "action": "Adicionar mais testes automatizados",
+      "command": "npm test"
+    }
+  ]
+}
