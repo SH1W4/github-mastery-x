@@ -48,7 +48,7 @@ jobs:
           <?xml version="1.0" encoding="UTF-8"?>
           <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
             <url>
-              <loc>https://joao.github.io/GITHUB_MASTERY/</loc>
+              <loc>https://NEO-SH1W4.github.io/github_mastery/</loc>
               <lastmod>$(date -u +%Y-%m-%d)</lastmod>
               <changefreq>weekly</changefreq>
               <priority>1.0</priority>
@@ -62,7 +62,7 @@ jobs:
           User-agent: *
           Allow: /
 
-          Sitemap: https://joao.github.io/GITHUB_MASTERY/sitemap.xml
+          Sitemap: https://NEO-SH1W4.github.io/github_mastery/sitemap.xml
           EOF
 
       - name: Add analytics tracking
