@@ -6,13 +6,11 @@
  * Usando IA para personalização e evolução contínua
  */
 
-import { execSync } from 'child_process';
 import { promises as fs } from 'fs';
-import path from 'path';
 import readline from 'readline';
-import os from 'os';
 
 // Configuração do GIDEN
+// eslint-disable-next-line no-unused-vars
 const GIDEN_CONFIG = {
   learningRate: 0.001,
   confidenceThreshold: 0.85,

@@ -26,7 +26,7 @@ async function testToken() {
     console.log('\n1️⃣ Verificando autenticação...');
     const { data: user } = await octokit.rest.users.getAuthenticated();
     
-    console.log(`\n✅ TOKEN VÁLIDO E FUNCIONANDO!\n`);
+    console.log('\n✅ TOKEN VÁLIDO E FUNCIONANDO!\n');
     console.log(`👤 Usuário: ${user.login}`);
     console.log(`📧 Nome: ${user.name || 'Não definido'}`);
     console.log(`📊 Repositórios públicos: ${user.public_repos}`);

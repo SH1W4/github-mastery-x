@@ -128,7 +128,7 @@ class LeadScoringSystem {
           {
             delay: 0,
             template: 'team_productivity',
-            subject: "Boost Your Team's Productivity by 12x",
+            subject: 'Boost Your Team\'s Productivity by 12x',
           },
           {
             delay: 3,
