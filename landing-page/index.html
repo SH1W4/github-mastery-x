@@ -6,6 +6,25 @@
     <title>GitHub Agent v2.0 - The AI-Powered GitHub Experience</title>
     <!-- Estilos e Dependências -->
     <script src="https://cdn.tailwindcss.com?v=3.4.1"></script>
+    <script>
+      // Configurar Tailwind para dark mode
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              dark: {
+                bg: '#0d1117',
+                surface: '#161b22',
+                border: '#30363d',
+                text: '#c9d1d9',
+                muted: '#8b949e'
+              }
+            }
+          }
+        }
+      }
+    </script>
 
     <!-- Scripts principais na ordem correta -->
     <script src="js/lead-scoring.js"></script>
@@ -82,43 +101,75 @@
       .stat-counter {
         transition: all 0.5s ease-out;
       }
+
+      /* Dark mode styles */
+      .dark .hero-gradient {
+        background: linear-gradient(135deg, #4338ca 0%, #6b21a8 100%);
+      }
+
+      /* Dark mode transition */
+      * {
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      /* Dark scrollbar */
+      .dark::-webkit-scrollbar-track {
+        background: #1f2937;
+      }
+
+      .dark::-webkit-scrollbar-thumb {
+        background: #4b5563;
+      }
     </style>
   </head>
 
-  <body class="bg-gray-50" x-data="landingPageApp()" x-cloak>
+  <body class="bg-gray-50 dark:bg-dark-bg transition-colors" x-data="landingPageApp()" x-cloak :class="{ 'dark': darkMode }">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm fixed w-full z-50">
+    <nav class="bg-white dark:bg-dark-surface shadow-sm fixed w-full z-50 transition-colors">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
           <div class="flex items-center">
-            <span class="text-xl font-bold text-gray-900">GitHub Agent v2.0</span>
+            <span class="text-xl font-bold text-gray-900 dark:text-dark-text">GitHub Agent v2.0</span>
             <span
-              class="ml-2 px-2 py-1 text-xs bg-purple-100 text-purple-800 rounded-full"
+              class="ml-2 px-2 py-1 text-xs bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full"
               >Beta</span
             >
           </div>
           <div class="flex items-center space-x-4">
             <a
               href="#demo"
-              class="text-gray-700 hover:text-purple-600"
+              class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
               data-track="visited_demo"
               >Demo</a
             >
             <a
               href="#features"
-              class="text-gray-700 hover:text-purple-600"
+              class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
               data-track="visited_features"
               >Features</a
             >
             <a
               href="#pricing"
-              class="text-gray-700 hover:text-purple-600"
+              class="text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400"
               data-track="visited_pricing"
               >Pricing</a
             >
+            <!-- Dark Mode Toggle -->
+            <button
+              @click="darkMode = !darkMode"
+              class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              <svg x-show="!darkMode" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+              </svg>
+              <svg x-show="darkMode" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
             <button
               @click="requestAccess()"
-              class="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700"
+              class="bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 transition-colors"
             >
               Request Access
             </button>
@@ -205,44 +256,44 @@
     </section>
 
     <!-- Performance Section -->
-    <section id="demo" class="py-20 bg-white">
+    <section id="demo" class="py-20 bg-white dark:bg-dark-bg">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+          <h2 class="text-4xl font-bold text-gray-900 dark:text-dark-text mb-4">
             See the difference speed makes
           </h2>
-          <p class="text-xl text-gray-600">
+          <p class="text-xl text-gray-600 dark:text-dark-muted">
             Real performance comparisons with GitHub CLI
           </p>
         </div>
 
         <!-- Performance Comparison Table -->
-        <div class="bg-gray-50 rounded-xl p-8 mb-12">
+        <div class="bg-gray-50 dark:bg-dark-surface rounded-xl p-8 mb-12">
           <div class="overflow-x-auto">
             <table class="w-full">
               <thead>
-                <tr class="border-b border-gray-200">
-                  <th class="text-left py-4 px-6 font-semibold text-gray-900">
+                <tr class="border-b border-gray-200 dark:border-dark-border">
+                  <th class="text-left py-4 px-6 font-semibold text-gray-900 dark:text-dark-text">
                     Operation
                   </th>
-                  <th class="text-center py-4 px-6 font-semibold text-gray-600">
+                  <th class="text-center py-4 px-6 font-semibold text-gray-600 dark:text-dark-muted">
                     GitHub CLI
                   </th>
-                  <th class="text-center py-4 px-6 font-semibold text-purple-600">
+                  <th class="text-center py-4 px-6 font-semibold text-purple-600 dark:text-purple-400">
                     Agent v2.0
                   </th>
-                  <th class="text-center py-4 px-6 font-semibold text-green-600">
+                  <th class="text-center py-4 px-6 font-semibold text-green-600 dark:text-green-400">
                     Improvement
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr
-                  class="border-b border-gray-100"
+                  class="border-b border-gray-100 dark:border-dark-border"
                   x-data="{ visible: false }"
                   x-intersect="visible = true"
                 >
-                  <td class="py-4 px-6 font-medium">Clone + Analyze</td>
+                  <td class="py-4 px-6 font-medium dark:text-dark-text">Clone + Analyze</td>
                   <td class="py-4 px-6 text-center">
                     <div class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">
                       45s
@@ -263,8 +314,8 @@
                     </div>
                   </td>
                 </tr>
-                <tr class="border-b border-gray-100">
-                  <td class="py-4 px-6 font-medium">Multi-repo sync</td>
+                <tr class="border-b border-gray-100 dark:border-dark-border">
+                  <td class="py-4 px-6 font-medium dark:text-dark-text">Multi-repo sync</td>
                   <td class="py-4 px-6 text-center">
                     <div class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">
                       3m 20s
@@ -286,7 +337,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="py-4 px-6 font-medium">Smart commit</td>
+                  <td class="py-4 px-6 font-medium dark:text-dark-text">Smart commit</td>
                   <td class="py-4 px-6 text-center">
                     <div class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">
                       12s
@@ -345,13 +396,13 @@
     </section>
 
     <!-- AI Features Section -->
-    <section id="features" class="py-20 bg-gray-50">
+    <section id="features" class="py-20 bg-gray-50 dark:bg-dark-surface">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+          <h2 class="text-4xl font-bold text-gray-900 dark:text-dark-text mb-4">
             Intelligence that understands your code
           </h2>
-          <p class="text-xl text-gray-600">
+          <p class="text-xl text-gray-600 dark:text-dark-muted">
             AI-powered features that learn from your patterns
           </p>
         </div>
@@ -359,19 +410,19 @@
         <div class="grid md:grid-cols-3 gap-8">
           <!-- Feature 1: Context-Aware Commits -->
           <div
-            class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow"
+            class="bg-white dark:bg-dark-bg rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow"
           >
             <div
               class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6"
             >
               <span class="text-3xl">🧠</span>
             </div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">Context-Aware Commits</h3>
-            <p class="text-gray-600 mb-6">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-dark-text mb-4">Context-Aware Commits</h3>
+            <p class="text-gray-600 dark:text-dark-muted mb-6">
               AI analyzes your changes and generates perfect commit messages that follow
               best practices.
             </p>
-            <div class="bg-gray-50 rounded-lg p-4">
+            <div class="bg-gray-50 dark:bg-dark-surface rounded-lg p-4">
               <div class="text-sm font-mono">
                 <div class="text-green-600">+ Added user authentication system</div>
                 <div class="text-red-600">- Removed deprecated login method</div>
@@ -385,19 +436,19 @@
 
           <!-- Feature 2: Predictive Analysis -->
           <div
-            class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow"
+            class="bg-white dark:bg-dark-bg rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow"
           >
             <div
               class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6"
             >
               <span class="text-3xl">🔮</span>
             </div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">Predictive Analysis</h3>
-            <p class="text-gray-600 mb-6">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-dark-text mb-4">Predictive Analysis</h3>
+            <p class="text-gray-600 dark:text-dark-muted mb-6">
               Spot issues before they become problems with AI-powered code health
               prediction.
             </p>
-            <div class="bg-gray-50 rounded-lg p-4">
+            <div class="bg-gray-50 dark:bg-dark-surface rounded-lg p-4">
               <div class="flex items-center justify-between mb-2">
                 <span class="text-sm font-medium">Code Health Score</span>
                 <span class="text-lg font-bold text-green-600">87%</span>
@@ -413,19 +464,19 @@
 
           <!-- Feature 3: Smart Automation -->
           <div
-            class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow"
+            class="bg-white dark:bg-dark-bg rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow"
           >
             <div
               class="w-16 h-16 bg-yellow-100 rounded-lg flex items-center justify-center mb-6"
             >
               <span class="text-3xl">⚡</span>
             </div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">Smart Automation</h3>
-            <p class="text-gray-600 mb-6">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-dark-text mb-4">Smart Automation</h3>
+            <p class="text-gray-600 dark:text-dark-muted mb-6">
               Learns your patterns and optimizes workflows automatically for maximum
               efficiency.
             </p>
-            <div class="bg-gray-50 rounded-lg p-4">
+            <div class="bg-gray-50 dark:bg-dark-surface rounded-lg p-4">
               <div class="space-y-2 text-sm">
                 <div class="flex items-center">
                   <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
@@ -447,13 +498,13 @@
     </section>
 
     <!-- Social Proof Section -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white dark:bg-dark-bg">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+          <h2 class="text-4xl font-bold text-gray-900 dark:text-dark-text mb-4">
             Join the exclusive preview
           </h2>
-          <p class="text-xl text-gray-600">
+          <p class="text-xl text-gray-600 dark:text-dark-muted">
             Trusted by developers at leading companies
           </p>
         </div>
@@ -467,7 +518,7 @@
             >
               2,847
             </div>
-            <div class="text-gray-600">developers on waitlist</div>
+            <div class="text-gray-600 dark:text-dark-muted">developers on waitlist</div>
           </div>
           <div class="text-center">
             <div
@@ -476,7 +527,7 @@
             >
               94%
             </div>
-            <div class="text-gray-600">would recommend to peers</div>
+            <div class="text-gray-600 dark:text-dark-muted">would recommend to peers</div>
           </div>
           <div class="text-center">
             <div
@@ -485,13 +536,13 @@
             >
               12x
             </div>
-            <div class="text-gray-600">average productivity gain</div>
+            <div class="text-gray-600 dark:text-dark-muted">average productivity gain</div>
           </div>
         </div>
 
         <!-- Testimonials -->
         <div class="grid md:grid-cols-2 gap-8 mb-16">
-          <div class="bg-gray-50 rounded-xl p-8">
+          <div class="bg-gray-50 dark:bg-dark-surface rounded-xl p-8">
             <div class="flex items-start">
               <img
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face&auto=format"
@@ -499,19 +550,19 @@
                 alt="Alex Thompson"
               />
               <div>
-                <p class="text-gray-800 mb-4">
+                <p class="text-gray-800 dark:text-dark-text mb-4">
                   "The AI suggestions are incredible. It's like having a senior
                   developer pair programming with you 24/7."
                 </p>
                 <div class="text-sm">
-                  <div class="font-semibold text-gray-900">Alex Thompson</div>
-                  <div class="text-gray-600">Senior Engineer @ Stripe</div>
+                  <div class="font-semibold text-gray-900 dark:text-dark-text">Alex Thompson</div>
+                  <div class="text-gray-600 dark:text-dark-muted">Senior Engineer @ Stripe</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="bg-gray-50 rounded-xl p-8">
+          <div class="bg-gray-50 dark:bg-dark-surface rounded-xl p-8">
             <div class="flex items-start">
               <img
                 src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face&auto=format"
@@ -519,13 +570,13 @@
                 alt="Maria Garcia"
               />
               <div>
-                <p class="text-gray-800 mb-4">
+                <p class="text-gray-800 dark:text-dark-text mb-4">
                   "We reduced our deployment time from 2 hours to 10 minutes. The ROI
                   was immediate."
                 </p>
                 <div class="text-sm">
-                  <div class="font-semibold text-gray-900">Maria Garcia</div>
-                  <div class="text-gray-600">DevOps Lead @ Shopify</div>
+                  <div class="font-semibold text-gray-900 dark:text-dark-text">Maria Garcia</div>
+                  <div class="text-gray-600 dark:text-dark-muted">DevOps Lead @ Shopify</div>
                 </div>
               </div>
             </div>
@@ -570,22 +621,22 @@
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-20 bg-gray-50">
+    <section id="pricing" class="py-20 bg-gray-50 dark:bg-dark-surface">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+          <h2 class="text-4xl font-bold text-gray-900 dark:text-dark-text mb-4">
             Simple, transparent pricing
           </h2>
-          <p class="text-xl text-gray-600">Choose the plan that fits your needs</p>
+          <p class="text-xl text-gray-600 dark:text-dark-muted">Choose the plan that fits your needs</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
           <!-- Individual Plan -->
-          <div class="bg-white rounded-xl p-8 shadow-lg">
+          <div class="bg-white dark:bg-dark-bg rounded-xl p-8 shadow-lg">
             <div class="text-center">
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">Individual</h3>
-              <div class="text-4xl font-bold text-purple-600 mb-2">$99</div>
-              <div class="text-gray-600 mb-8">per month</div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-dark-text mb-4">Individual</h3>
+              <div class="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">$99</div>
+              <div class="text-gray-600 dark:text-dark-muted mb-8">per month</div>
               <ul class="text-left space-y-3 mb-8">
                 <li class="flex items-center">
                   <svg
@@ -634,7 +685,7 @@
 
           <!-- Team Plan -->
           <div
-            class="bg-white rounded-xl p-8 shadow-lg border-2 border-purple-500 relative"
+            class="bg-white dark:bg-dark-bg rounded-xl p-8 shadow-lg border-2 border-purple-500 dark:border-purple-400 relative"
           >
             <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
               <span
@@ -643,9 +694,9 @@
               >
             </div>
             <div class="text-center">
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">Team</h3>
-              <div class="text-4xl font-bold text-purple-600 mb-2">$499</div>
-              <div class="text-gray-600 mb-8">per month, up to 10 developers</div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-dark-text mb-4">Team</h3>
+              <div class="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">$499</div>
+              <div class="text-gray-600 dark:text-dark-muted mb-8">per month, up to 10 developers</div>
               <ul class="text-left space-y-3 mb-8">
                 <li class="flex items-center">
                   <svg
@@ -705,11 +756,11 @@
           </div>
 
           <!-- Enterprise Plan -->
-          <div class="bg-white rounded-xl p-8 shadow-lg">
+          <div class="bg-white dark:bg-dark-bg rounded-xl p-8 shadow-lg">
             <div class="text-center">
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">Enterprise</h3>
-              <div class="text-4xl font-bold text-purple-600 mb-2">Custom</div>
-              <div class="text-gray-600 mb-8">starting at $2,000/month</div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-dark-text mb-4">Enterprise</h3>
+              <div class="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">Custom</div>
+              <div class="text-gray-600 dark:text-dark-muted mb-8">starting at $2,000/month</div>
               <ul class="text-left space-y-3 mb-8">
                 <li class="flex items-center">
                   <svg
@@ -799,31 +850,31 @@
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
       @click.away="showModal = false"
     >
-      <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4" @click.stop>
-        <h3 class="text-2xl font-bold text-gray-900 mb-4">Request Early Access</h3>
+      <div class="bg-white dark:bg-dark-surface rounded-xl p-8 max-w-md w-full mx-4" @click.stop>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-dark-text mb-4">Request Early Access</h3>
         <form @submit.prevent="submitAccessRequest()">
           <div class="space-y-4">
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
               <input
                 type="email"
                 x-model="form.email"
                 required
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-dark-text rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2"
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                 >Company</label
               >
               <input
                 type="text"
                 x-model="form.company"
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                class="w-full px-3 py-2 border border-gray-300 dark:border-dark-border dark:bg-dark-bg dark:text-dark-text rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Role</label>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Role</label>
               <select
                 x-model="form.role"
                 class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
@@ -840,7 +891,7 @@
             <button
               type="button"
               @click="showModal = false"
-              class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50"
+              class="flex-1 px-4 py-2 border border-gray-300 dark:border-dark-border text-gray-700 dark:text-gray-300 rounded-md hover:bg-gray-50 dark:hover:bg-dark-border"
             >
               Cancel
             </button>
