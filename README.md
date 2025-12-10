@@ -49,15 +49,15 @@ $ github-agent analyze --repo react --performance
 
 ## 🧠 Intelligence that understands your code
 
-### 🔮 Context-Aware Commits
+### <img src="assets/icon-context.svg" width="28" height="28" style="vertical-align: middle;"> Context-Aware Commits
 AI analyzes your changes and generates perfect commit messages that follow best practices.
 > *Suggested commit: "feat(auth): implement OAuth2 with JWT tokens"*
 
-### 🛡️ Predictive Analysis
+### <img src="assets/icon-predictive.svg" width="28" height="28" style="vertical-align: middle;"> Predictive Analysis
 Spot issues before they become problems with AI-powered code health prediction.
 > *⚠️ Potential memory leak detected in utils/cache.js*
 
-### ⚡ Smart Automation
+### <img src="assets/icon-automation.svg" width="28" height="28" style="vertical-align: middle;"> Smart Automation
 Learns your patterns and optimizes workflows automatically for maximum efficiency.
 - Auto-sync with main branch
 - Run tests before commit
