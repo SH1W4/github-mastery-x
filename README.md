@@ -2,12 +2,12 @@
 
 <div align="center">
   
+  ![GitHub Agent v2.0](assets/hero-banner.png)
+  
   ![Banner](https://img.shields.io/badge/Status-Exclusive_Preview-success?style=for-the-badge&logo=github)
   ![Version](https://img.shields.io/badge/Version-2.0.0_Beta-blue?style=for-the-badge)
   ![AI](https://img.shields.io/badge/AI_Powered-Yes-purple?style=for-the-badge)
 
-  <h1 style="font-size: 3em;">Meet the GitHub Agent<br>that thinks like you do 🧠</h1>
-  
   <h3>10x faster operations. AI-powered intelligence.<br>Built by developers, for developers who demand excellence.</h3>
 
   <p>
